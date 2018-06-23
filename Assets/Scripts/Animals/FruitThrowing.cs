@@ -9,12 +9,18 @@ public class TimerEvent : UnityEvent<float>
 
 }
 
-public interface IMinigame
+public abstract class Minigame : MonoBehaviour
 {
+    [SerializeField] protected List<AnimalController> _players = new List<AnimalController>();
+
+    public List<AnimalController> Players
+    {
+        get { return _players; }
+    }
 
 }
 
-public class FruitThrowing : MonoBehaviour, IMinigame
+public class FruitThrowing : Minigame
 {
 
     [SerializeField]
@@ -35,12 +41,8 @@ public class FruitThrowing : MonoBehaviour, IMinigame
 
     public TimerEvent OnMatchTimer;
 
-    [SerializeField] private List<AnimalController> _players = new List<AnimalController>();
 
-    public List<AnimalController> Players
-    {
-        get { return _players; }
-    }
+    
 
     // Use this for initialization
     void Start ()

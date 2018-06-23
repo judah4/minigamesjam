@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainGameScene.unity
+    guid: af3367540d39210478300a6c41682a2b
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Test.unity
+    path: Assets/Scenes/ArenaTesting.unity
     guid: 85f291af1085db94798e85c8de069551
   - enabled: 1
     path: Assets/Scenes/Arenas/Canyon.unity
@@ -17,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arenas/Rome.unity
     guid: c0a7adeaf7e1d90479d53ee7775aaa06
+  - enabled: 1
+    path: Assets/Scenes/Arenas/Game1.unity
+    guid: 15dd692a8544fe1429e1bf5670a785f3
+  - enabled: 1
+    path: Assets/Scenes/Arenas/WaitingRoom.unity
+    guid: 68afce7ae46142b489eb8421a86f4f04
   m_configObjects: {}

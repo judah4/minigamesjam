@@ -25,7 +25,7 @@ public class FruitCollect : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collide " + collision.gameObject.name);
+        //Debug.Log("Collide " + collision.gameObject.name);
 
         if (collision.transform.tag != "Fruit")
             return;

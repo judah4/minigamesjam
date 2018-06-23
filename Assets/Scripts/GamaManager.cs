@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GamaManager : MonoBehaviour {
+public class GamaManager : MonoBehaviour
+{
+
+    public static GamaManager Instance;
 
     [SerializeField]
     private string _defaultScene;
@@ -15,6 +18,16 @@ public class GamaManager : MonoBehaviour {
 
     [SerializeField]
     private List<AnimalController> _players;
+
+    public List<AnimalController> Players
+    {
+        get { return _players; }
+    }
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     // Use this for initialization
     void Start()
@@ -63,15 +76,15 @@ public class GamaManager : MonoBehaviour {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         loadedScenes.Add(sceneName);
 
-        var game = GameObject.FindObjectOfType<Minigame>();
+        //var game = GameObject.FindObjectOfType<Minigame>();
 
-        if (game != null)
-        {
-            for (int cnt = 0; cnt < _players.Count; cnt++)
-            {
-                game.Players.Add(_players[cnt]);
-            }
-        }
+        //if (game != null)
+        //{
+        //    for (int cnt = 0; cnt < _players.Count; cnt++)
+        //    {
+        //        game.Players.Add(_players[cnt]);
+        //    }
+        //}
     }
 
 }

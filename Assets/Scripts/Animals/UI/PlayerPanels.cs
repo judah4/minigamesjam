@@ -15,14 +15,14 @@ public class PlayerPanels : MonoBehaviour
 
     // Use this for initialization
     void Start () {
-        for (int cnt = 0; cnt < _fruitThrowing.Players.Count; cnt++)
+        for (int cnt = 0; cnt < GamaManager.Instance.Players.Count; cnt++)
         {
             var panel = Instantiate(_panelPrefab, _parentPanel);
             _panels.Add(panel);
 
             panel.SetPlayer("Player " + (cnt+1));
 
-            var collect = _fruitThrowing.Players[cnt].GetComponent<FruitCollect>();
+            var collect = GamaManager.Instance.Players[cnt].GetComponent<FruitCollect>();
             collect.OnPointsGained.AddListener(panel.SetScore);
 
         }

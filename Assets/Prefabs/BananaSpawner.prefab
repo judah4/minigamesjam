@@ -54,7 +54,7 @@ MonoBehaviour:
   _fruitPrefabs:
   - {fileID: 114312549232592454, guid: 9cba41b4da2b11441b35cca5a9d5144c, type: 2}
   - {fileID: 114312549232592454, guid: 7a1ac998f1067e248a1129858d9643e8, type: 2}
-  _interval: 0.5
+  _interval: 1
   _spawnHeightRange: {x: 10, y: 20}
   _spawnRadius: 20
   _matchTimer: 45
@@ -73,3 +73,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: TimerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _players:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

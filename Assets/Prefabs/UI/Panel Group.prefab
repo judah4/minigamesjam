@@ -65,10 +65,7 @@ MonoBehaviour:
     type: 2}
   _parentPanel: {fileID: 224258280743897092}
   _panels: []
-  _players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _fruitThrowing: {fileID: 0}
 --- !u!224 &224258280743897092
 RectTransform:
   m_ObjectHideFlags: 1

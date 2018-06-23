@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 114158385453490810}
   - component: {fileID: 143307321264191434}
   - component: {fileID: 114252367894340328}
+  - component: {fileID: 114199630658474280}
+  - component: {fileID: 135678645624144986}
   m_Layer: 0
   m_Name: Animal
   m_TagString: Untagged
@@ -39,7 +41,6 @@ GameObject:
   - component: {fileID: 4218101659061698}
   - component: {fileID: 33050768395138006}
   - component: {fileID: 23912824079463358}
-  - component: {fileID: 65329767393162738}
   m_Layer: 0
   m_Name: Cuber
   m_TagString: Untagged
@@ -67,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1627807937425968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -11.3, y: 0, z: -11.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4218101659061698}
@@ -116,18 +117,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1873739663204520}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65329767393162738
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1873739663204520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114158385453490810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,6 +132,22 @@ MonoBehaviour:
   _movement: {x: 0, y: 0, z: 0}
   _moveSpeed: 10
   life: 10
+--- !u!114 &114199630658474280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627807937425968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f50529b83d47b46948f078ac3580fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fruit: 0
+  OnPointsGained:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: FruitEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114252367894340328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,7 +159,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c6bd1295b0d43498deb893bd961f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerNumber: 1
   AnimalController: {fileID: 114158385453490810}
+--- !u!135 &135678645624144986
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627807937425968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0.51, z: 0}
 --- !u!143 &143307321264191434
 CharacterController:
   m_ObjectHideFlags: 1

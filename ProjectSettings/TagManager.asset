@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - StartPoint
+  - Fruit
   layers:
   - Default
   - TransparentFX

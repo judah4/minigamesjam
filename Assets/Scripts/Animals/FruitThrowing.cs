@@ -6,7 +6,7 @@ public class FruitThrowing : MonoBehaviour
 {
 
     [SerializeField]
-    private Fruit _fruitPrefab;
+    private Fruit[] _fruitPrefabs;
 
     [SerializeField]
     private float _interval = 3;
@@ -37,7 +37,7 @@ public class FruitThrowing : MonoBehaviour
 
 	    dir *= Random.Range(0.4f, 1.1f);
 
-	    var fruit = Instantiate(_fruitPrefab, pos, Quaternion.identity);
+	    var fruit = Instantiate(_fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)], pos, Quaternion.identity);
         fruit.Throw(dir);
 	}
 

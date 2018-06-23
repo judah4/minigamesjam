@@ -13,6 +13,7 @@ public class GamaManager : MonoBehaviour {
     [SerializeField]
     private List<string> loadedScenes = new List<string>();
 
+    [SerializeField]
     private List<AnimalController> _players;
 
     // Use this for initialization
@@ -37,7 +38,7 @@ public class GamaManager : MonoBehaviour {
 
         for (int cnt = 0; cnt < 5; cnt++)
         {
-            if (Input.GetKeyDown("Alpha" + (cnt + 1)))
+            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode),"Alpha" + (cnt + 1))))
             {
                 LoadScene(Scenes[cnt]);
             }
@@ -53,7 +54,7 @@ public class GamaManager : MonoBehaviour {
 
     IEnumerator LoadSceneAsync(string sceneName)
     {
-        while (loadedScenes.Count > 1)
+        while (loadedScenes.Count > 0)
         {
             yield return SceneManager.UnloadSceneAsync(loadedScenes[0]);
 

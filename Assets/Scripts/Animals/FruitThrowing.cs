@@ -70,7 +70,7 @@ public class FruitThrowing : Minigame
 
 	    dir *= Random.Range(0.4f, 1.1f);
 
-	    var fruit = Instantiate(_fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)], pos, Quaternion.identity);
+	    var fruit = Instantiate(_fruitPrefabs[Random.Range(0, _fruitPrefabs.Length)], pos, Quaternion.identity, transform);
         fruit.Throw(dir);
 	}
 

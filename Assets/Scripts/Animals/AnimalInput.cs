@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class AnimalInput : MonoBehaviour
 {
+    public enum Player
+    {
+        One = 1,
+        Two,
+        Three
+    }
+
+    public Player PlayerNumber = Player.One;
 
     public AnimalController AnimalController;
 
@@ -15,7 +23,16 @@ public class AnimalInput : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    var movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+	    var horizInput = "Horizontal";
+	    var vertInput = "Vertical";
+        if (PlayerNumber > Player.One)
+	    {
+	        horizInput += (int)PlayerNumber;
+	        vertInput += (int)PlayerNumber;
+        }
+
+
+        var movement = new Vector3(Input.GetAxis(horizInput), 0, Input.GetAxis(vertInput));
 	    AnimalController.Move(movement);
 
     }

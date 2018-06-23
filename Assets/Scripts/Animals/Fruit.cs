@@ -16,6 +16,11 @@ public class Fruit : MonoBehaviour
 	    _rigidbody.AddForce(_throwDir, ForceMode.Impulse);
 
     }
+
+    public void Throw(Vector3 throwDir)
+    {
+        _throwDir = throwDir;
+    }
 	
 
 }

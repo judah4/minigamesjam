@@ -34,10 +34,16 @@ public class AnimalController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+
         if(Dead)
             return;
 
+
 	    _characterController.Move(_movement * _moveSpeed * Time.deltaTime);
+
+	    var pos = _characterController.transform.position;
+	    pos.y = 0;
+	    _characterController.transform.position = pos;
 
 	    if (_movement.magnitude > 0)
 	    {

@@ -13,7 +13,7 @@ public class PlayerPanel : MonoBehaviour
 
     public void SetPlayer(string name)
     {
-        _nameText.name = name;
+        _nameText.text = name;
     }
 
     public void SetScore(int score)

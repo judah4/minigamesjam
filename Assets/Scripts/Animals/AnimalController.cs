@@ -24,6 +24,9 @@ public class AnimalController : MonoBehaviour
     [SerializeField]
     private float _lockTime = 0;
 
+    [SerializeField]
+    private float _pushPower = 9;
+
     public bool Dead
     {
         get { return _life < 1; }
@@ -90,9 +93,9 @@ public class AnimalController : MonoBehaviour
 
         animal.Stun(1);
 
-        var dir = transform.position - collision.transform.position;
+        var dir = collision.transform.position - transform.position;
 
-        animal.Rigidbody.AddForce(dir * 10, ForceMode.Impulse);
+        animal.Rigidbody.AddForce(dir * _pushPower, ForceMode.Impulse);
 
         //Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         //body.velocity = pushDir * 10;

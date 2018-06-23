@@ -147,7 +147,8 @@ MonoBehaviour:
   _rigidbody: {fileID: 54945736442981124}
   _movement: {x: 0, y: 0, z: 0}
   _moveSpeed: 10
-  life: 10
+  _life: 10
+  _lockTime: 0
 --- !u!114 &114199630658474280
 MonoBehaviour:
   m_ObjectHideFlags: 1

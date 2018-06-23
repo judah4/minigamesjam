@@ -164,6 +164,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32378e1574260934b96c1d4ce253ea1d, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &756302946 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114158385453490810, guid: 32378e1574260934b96c1d4ce253ea1d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1101332716}
+  m_Script: {fileID: 11500000, guid: 8251210e9e516b043b5df8cc1136be83, type: 3}
 --- !u!1 &872420215
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +316,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 73.004005, y: 263.53198, z: 132.21501}
+--- !u!114 &1059242359 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114158385453490810, guid: 32378e1574260934b96c1d4ce253ea1d,
+    type: 2}
+  m_PrefabInternal: {fileID: 33386890}
+  m_Script: {fileID: 11500000, guid: 8251210e9e516b043b5df8cc1136be83, type: 3}
 --- !u!1001 &1101332716
 Prefab:
   m_ObjectHideFlags: 0
@@ -497,6 +509,11 @@ MonoBehaviour:
   _defaultScene: WaitingRoom
   Scenes:
   - Game1
+  loadedScenes: []
+  _players:
+  - {fileID: 1516693177}
+  - {fileID: 1059242359}
+  - {fileID: 756302946}
 --- !u!1001 &1296464750
 Prefab:
   m_ObjectHideFlags: 0
@@ -539,6 +556,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32378e1574260934b96c1d4ce253ea1d, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1516693177 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114158385453490810, guid: 32378e1574260934b96c1d4ce253ea1d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1296464750}
+  m_Script: {fileID: 11500000, guid: 8251210e9e516b043b5df8cc1136be83, type: 3}
 --- !u!1 &1921578362
 GameObject:
   m_ObjectHideFlags: 0

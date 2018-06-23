@@ -13,6 +13,7 @@ public class GamaManager : MonoBehaviour {
     [SerializeField]
     private List<string> loadedScenes = new List<string>();
 
+    [SerializeField]
     private List<AnimalController> _players;
 
     // Use this for initialization

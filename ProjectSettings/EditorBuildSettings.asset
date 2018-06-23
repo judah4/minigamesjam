@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: 85f291af1085db94798e85c8de069551
+  - enabled: 1
+    path: Assets/Scenes/Arenas/Canyon.unity
+    guid: 132d2b63bd907a443b3e25209f47ed5c
+  - enabled: 1
+    path: Assets/Scenes/Arenas/Rome.unity
+    guid: c0a7adeaf7e1d90479d53ee7775aaa06
   m_configObjects: {}

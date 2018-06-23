@@ -10,6 +10,7 @@ public class GamaManager : MonoBehaviour {
 
     public List<string> Scenes = new List<string>();
 
+    [SerializeField]
     private List<string> loadedScenes = new List<string>();
 
     private List<AnimalController> _players;
@@ -34,15 +35,29 @@ public class GamaManager : MonoBehaviour {
 
         }
 
+        for (int cnt = 0; cnt < 5; cnt++)
+        {
+            if (Input.GetKeyDown("Alpha" + (cnt + 1)))
+            {
+                LoadScene(Scenes[cnt]);
+            }
+        }
+
     }
 
     void LoadScene(string sceneName)
     {
-        for (int cnt = 0; cnt < loadedScenes.Count; cnt++)
-        {
-            SceneManager.UnloadSceneAsync(loadedScenes[cnt]);
+        StartCoroutine(LoadSceneAsync(sceneName));
 
-            loadedScenes.Remove(sceneName);
+    }
+
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
+        while (loadedScenes.Count > 1)
+        {
+            yield return SceneManager.UnloadSceneAsync(loadedScenes[0]);
+
+            loadedScenes.Remove(loadedScenes[0]);
         }
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         loadedScenes.Add(sceneName);
@@ -56,6 +71,6 @@ public class GamaManager : MonoBehaviour {
                 game.Players.Add(_players[cnt]);
             }
         }
-
     }
+
 }

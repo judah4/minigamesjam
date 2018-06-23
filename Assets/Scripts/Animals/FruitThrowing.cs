@@ -1,6 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class TimerEvent : UnityEvent<float>
+{
+
+}
 
 public class FruitThrowing : MonoBehaviour
 {
@@ -17,15 +24,25 @@ public class FruitThrowing : MonoBehaviour
     private float _spawnRadius = 10;
 
     private float _time;
-	// Use this for initialization
-	void Start ()
+
+    [SerializeField]
+    private float _matchTimer = 80;
+
+    public TimerEvent OnMatchTimer;
+
+    // Use this for initialization
+    void Start ()
 	{
 	    _time = Time.time + .04f;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(Time.time <_time)
+	void Update ()
+	{
+	    _matchTimer -= Time.deltaTime;
+	    OnMatchTimer.Invoke(_matchTimer);
+
+        if (Time.time <_time)
             return;
 
 	    _time = Time.time + _interval + Random.Range(-2, 1);

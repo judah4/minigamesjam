@@ -35,7 +35,7 @@ public class FruitThrowing : MonoBehaviour
 
         pos.y = _spawnHeight;
 
-	    dir *= Random.Range(0.4f, 1.4f);
+	    dir *= Random.Range(0.4f, 1.1f);
 
 	    var fruit = Instantiate(_fruitPrefab, pos, Quaternion.identity);
         fruit.Throw(dir);

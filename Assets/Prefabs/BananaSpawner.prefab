@@ -53,6 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fruitPrefab: {fileID: 114312549232592454, guid: 9cba41b4da2b11441b35cca5a9d5144c,
     type: 2}
-  _interval: 3
-  _spawnHeight: 5
-  _spawnRadius: 15
+  _interval: 0.5
+  _spawnHeight: 17
+  _spawnRadius: 20

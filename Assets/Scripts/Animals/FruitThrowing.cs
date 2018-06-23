@@ -11,12 +11,12 @@ public class TimerEvent : UnityEvent<float>
 
 public abstract class Minigame : MonoBehaviour
 {
-    [SerializeField] protected List<AnimalController> _players = new List<AnimalController>();
+    //[SerializeField] protected List<AnimalController> _players = new List<AnimalController>();
 
-    public List<AnimalController> Players
-    {
-        get { return _players; }
-    }
+    //public List<AnimalController> Players
+    //{
+    //    get { return _players; }
+    //}
 
     public List<Transform> Spawns = new List<Transform>();
 

@@ -225,11 +225,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114013749687945234, guid: 6530c9ec97bfc854c977cd99d0f4ba28,
-        type: 2}
-      propertyPath: _fruitPrefabs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4454330423946488, guid: 6530c9ec97bfc854c977cd99d0f4ba28, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -262,18 +257,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114013749687945234, guid: 6530c9ec97bfc854c977cd99d0f4ba28,
-        type: 2}
-      propertyPath: _fruitPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 114312549232592454, guid: 9cba41b4da2b11441b35cca5a9d5144c,
-        type: 2}
-    - target: {fileID: 114013749687945234, guid: 6530c9ec97bfc854c977cd99d0f4ba28,
-        type: 2}
-      propertyPath: _fruitPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 114312549232592454, guid: 7a1ac998f1067e248a1129858d9643e8,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6530c9ec97bfc854c977cd99d0f4ba28, type: 2}
   m_IsPrefabParent: 0

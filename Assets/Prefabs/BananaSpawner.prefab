@@ -51,8 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e470534cdef7c9429220a9275942944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fruitPrefab: {fileID: 114312549232592454, guid: 9cba41b4da2b11441b35cca5a9d5144c,
-    type: 2}
+  _fruitPrefabs:
+  - {fileID: 114312549232592454, guid: 9cba41b4da2b11441b35cca5a9d5144c, type: 2}
+  - {fileID: 114312549232592454, guid: 7a1ac998f1067e248a1129858d9643e8, type: 2}
   _interval: 0.5
   _spawnHeight: 17
   _spawnRadius: 20

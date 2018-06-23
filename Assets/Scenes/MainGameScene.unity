@@ -509,6 +509,7 @@ MonoBehaviour:
   _defaultScene: WaitingRoom
   Scenes:
   - Game1
+  - Minigame 2 Scene
   loadedScenes: []
   _players:
   - {fileID: 1516693177}

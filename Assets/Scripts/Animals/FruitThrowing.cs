@@ -18,6 +18,8 @@ public abstract class Minigame : MonoBehaviour
         get { return _players; }
     }
 
+    public List<Transform> Spawns = new List<Transform>();
+
 }
 
 public class FruitThrowing : Minigame

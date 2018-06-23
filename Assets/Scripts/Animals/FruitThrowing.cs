@@ -19,7 +19,7 @@ public class FruitThrowing : MonoBehaviour
     private float _interval = 3;
 
     [SerializeField]
-    private float _spawnHeight = 5;
+    private Vector2 _spawnHeightRange = new Vector2(10,20);
     [SerializeField]
     private float _spawnRadius = 10;
 
@@ -50,7 +50,7 @@ public class FruitThrowing : MonoBehaviour
 	    var pos = RandomCircle(Vector3.zero, _spawnRadius);
 	    var dir = -pos;
 
-        pos.y = _spawnHeight;
+        pos.y = Random.Range(_spawnHeightRange.x, _spawnHeightRange.y);
 
 	    dir *= Random.Range(0.4f, 1.1f);
 

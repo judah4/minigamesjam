@@ -5,7 +5,7 @@ public class Quit : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(Keycode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
 
     }

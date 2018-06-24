@@ -51,6 +51,7 @@ public class GamaManager : MonoBehaviour
     [SerializeField] private AudioClip _gamesBeginClip;
 
     private float _audioTime = 0;
+    private int _lastClip = 0;
 
     public GameState GameState
     {
@@ -110,7 +111,17 @@ public class GamaManager : MonoBehaviour
             {
                 _audioTime = Time.time + Random.Range(8f, 20f);
                 var clips = _audioClips[_level % Scenes.Count];
-                _audioSource.clip = clips.AudioClips[Random.Range(0, clips.AudioClips.Count)];
+
+                var clipIndex = Random.Range(0, clips.AudioClips.Count);
+                if (clipIndex == _lastClip)
+                {
+                    clipIndex++;
+                    clipIndex %= clips.AudioClips.Count;
+                }
+
+                _lastClip = clipIndex;
+
+                _audioSource.clip = clips.AudioClips[clipIndex];
                 _audioSource.Play();
             }
         }

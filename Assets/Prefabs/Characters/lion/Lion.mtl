@@ -1,0 +1,10 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.179037358)
+
+newmtl DefaultMaterial
+illum 1
+
+newmtl weapon
+kd 0.0941177 0.968628 0.027451
+illum 1
+

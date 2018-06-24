@@ -12,6 +12,7 @@ public class LionController : MonoBehaviour
 
     [SerializeField] private NavMeshAgent _agent;
     private float _startAgentSpeed = 10;
+    [SerializeField]
     private float _startAgentAngular = 10;
     private float _startAgentAccel = 10;
     [SerializeField]

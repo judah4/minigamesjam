@@ -48,6 +48,8 @@ public class AnimalController : MonoBehaviour
         get { return _life; }
     }
 
+    public string CharacterName;
+
     private Vector3? _floatPos;
 
 

@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public enum GameState
 {
+    Wait,
     Play,
     Unload,
-    Load
+    Load,
+    End
 }
 
 public class GamaManager : MonoBehaviour
@@ -18,6 +20,9 @@ public class GamaManager : MonoBehaviour
     [SerializeField]
     private string _defaultScene;
 
+    [SerializeField]
+    private string _resultScene;
+
     public List<string> Scenes = new List<string>();
 
     [SerializeField]
@@ -26,7 +31,7 @@ public class GamaManager : MonoBehaviour
     [SerializeField]
     private List<AnimalController> _players;
 
-    private GameState _gameState = GameState.Play;
+    private GameState _gameState = GameState.Wait;
 
     [SerializeField]
     private int _level = 0;
@@ -40,6 +45,8 @@ public class GamaManager : MonoBehaviour
     {
         get { return _players; }
     }
+
+    public List<AnimalController> Winners = new List<AnimalController>();
 
     void Awake()
     {
@@ -59,21 +66,22 @@ public class GamaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (GameState == GameState.Wait)
         {
-            LoadScene(Scenes[_level % Scenes.Count]);
-
-        }
-
-        for (int cnt = 0; cnt < 5; cnt++)
-        {
-            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode),"Alpha" + (cnt + 1))))
+            if (Input.GetKeyUp(KeyCode.Space))
             {
-                LoadScene(Scenes[cnt]);
+                LoadScene(Scenes[_level % Scenes.Count]);
+
+            }
+
+            for (int cnt = 0; cnt < 5; cnt++)
+            {
+                if (Input.GetKeyDown((KeyCode) System.Enum.Parse(typeof(KeyCode), "Alpha" + (cnt + 1))))
+                {
+                    LoadScene(Scenes[cnt]);
+                }
             }
         }
-
     }
 
     public void LoadNextLevel()
@@ -140,6 +148,8 @@ public class GamaManager : MonoBehaviour
 
     public void FinishGame(AnimalController alivePlayer)
     {
-        throw new System.NotImplementedException();
+        Winners.Add(alivePlayer);
+        _gameState = GameState.End;
+        LoadScene(_resultScene);
     }
 }

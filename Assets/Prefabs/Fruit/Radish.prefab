@@ -173,6 +173,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 54563724609669150}
   _throwDir: {x: -11, y: 0, z: 1}
   _timeSpan: 5
+  _healAmt: 2
 --- !u!135 &135594449393520996
 SphereCollider:
   m_ObjectHideFlags: 1

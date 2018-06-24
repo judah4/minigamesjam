@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 [System.Serializable]
@@ -94,6 +95,10 @@ public class AnimalController : MonoBehaviour
         {
             _collider = GetComponent<CapsuleCollider>();
         }
+
+
+        var tween = CharacterSetup[characterId].Model.transform.DOLocalRotate(new Vector3(0, 0, 10), .5f, RotateMode.Fast).SetLoops(-1, LoopType.Yoyo);
+
     }
 	
 	// Update is called once per frame

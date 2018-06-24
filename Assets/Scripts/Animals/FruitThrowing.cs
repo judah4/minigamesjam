@@ -20,6 +20,15 @@ public abstract class Minigame : MonoBehaviour
 
     public List<Transform> Spawns = new List<Transform>();
 
+    protected void LoadIn()
+    {
+        for (int cnt = 0; cnt < GamaManager.Instance.Players.Count; cnt++)
+        {
+            GamaManager.Instance.Players[cnt].Freeze(false, Spawns[cnt].position);
+
+        }
+    }
+
 }
 
 public class FruitThrowing : Minigame
@@ -48,8 +57,10 @@ public class FruitThrowing : Minigame
 
     // Use this for initialization
     void Start ()
-	{
-	    _time = Time.time + .04f;
+    {
+        LoadIn();
+
+        _time = Time.time + .04f;
 	}
 	
 	// Update is called once per frame

@@ -43,7 +43,7 @@ public class GamaManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             LoadScene(Scenes[Random.Range(0, Scenes.Count)]);
 
@@ -67,14 +67,30 @@ public class GamaManager : MonoBehaviour
 
     IEnumerator LoadSceneAsync(string sceneName)
     {
+        //lift characters
+        for (int cnt = 0; cnt < _players.Count; cnt++)
+        {
+            _players[cnt].Freeze(true, _players[cnt].transform.position + new Vector3(0, 20, 0));
+
+        }
+
+        //unload scene
         while (loadedScenes.Count > 0)
         {
             yield return SceneManager.UnloadSceneAsync(loadedScenes[0]);
 
             loadedScenes.Remove(loadedScenes[0]);
         }
+        
+        //reload scene
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         loadedScenes.Add(sceneName);
+
+        //for (int cnt = 0; cnt < _players.Count; cnt++)
+        //{
+        //    _players[cnt].Freeze(false);
+
+        //}
 
         //var game = GameObject.FindObjectOfType<Minigame>();
 

@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Quit : MonoBehaviour
+public class ClosingGame : MonoBehaviour
 {
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
+            Quit();
 
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

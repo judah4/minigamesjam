@@ -589,11 +589,10 @@ MonoBehaviour:
   _soundEffectSource: {fileID: 82019792878978796}
   _bounceSound: {fileID: 8300000, guid: 09d58040718a2474daec41179c9c903b, type: 3}
   _eatClips:
-  - {fileID: 8300000, guid: b2365353ee32d91408e969e1028123b1, type: 3}
-  - {fileID: 8300000, guid: 547c49cf942c4f04e8ef7ca850c72f94, type: 3}
-  - {fileID: 8300000, guid: 39fc9d0c07a2ed043bd223f6f19b047b, type: 3}
-  - {fileID: 8300000, guid: 6ed855b01223cbd49acce2141c820770, type: 3}
-  - {fileID: 8300000, guid: 3cec8f1175e658c4ba00346573e7f71e, type: 3}
+  - {fileID: 8300000, guid: 6516b74f3f9593047afbcc9ce157826b, type: 3}
+  - {fileID: 8300000, guid: f0e18d222083d5e43baf6a4e22a21ba3, type: 3}
+  - {fileID: 8300000, guid: 016158a35f43c8d4bbd215adab05365f, type: 3}
+  - {fileID: 8300000, guid: b9fa1a6d538d3774ba1b6b89c98672cd, type: 3}
   OnLifeChange:
     m_PersistentCalls:
       m_Calls: []

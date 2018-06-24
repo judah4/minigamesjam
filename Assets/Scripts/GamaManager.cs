@@ -12,6 +12,12 @@ public enum GameState
     End
 }
 
+[System.Serializable]
+public class AudioForLevel
+{
+    [SerializeField] public List<AudioClip> AudioClips;
+}
+
 public class GamaManager : MonoBehaviour
 {
 
@@ -38,6 +44,13 @@ public class GamaManager : MonoBehaviour
 
     [SerializeField]
     private int _level = 0;
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private List<AudioForLevel> _audioClips;
+
+    [SerializeField] private AudioClip _gamesBeginClip;
+
+    private float _audioTime = 0;
 
     public GameState GameState
     {
@@ -73,10 +86,14 @@ public class GamaManager : MonoBehaviour
 
         if (GameState == GameState.Wait)
         {
+            _audioTime = Time.time + Random.Range(6f, 15f);
+
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                _audioSource.clip = _gamesBeginClip;
+                _audioSource.Play();
                 LoadScene(Scenes[_level % Scenes.Count]);
-
+                _audioTime = Time.time + Random.Range(6, 15);
             }
 
             for (int cnt = 0; cnt < 5; cnt++)
@@ -85,6 +102,16 @@ public class GamaManager : MonoBehaviour
                 {
                     LoadScene(Scenes[cnt]);
                 }
+            }
+        }
+        else if (GameState == GameState.Play)
+        {
+            if (Time.time > _audioTime)
+            {
+                _audioTime = Time.time + Random.Range(8f, 20f);
+                var clips = _audioClips[_level % Scenes.Count];
+                _audioSource.clip = clips.AudioClips[Random.Range(0, clips.AudioClips.Count)];
+                _audioSource.Play();
             }
         }
     }

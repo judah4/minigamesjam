@@ -125,7 +125,7 @@ public class AnimalController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Character collide " + collision.transform.name);
+        //Debug.Log("Character collide " + collision.transform.name);
 
         Rigidbody body = collision.collider.attachedRigidbody;
         if (body == null || body.isKinematic)

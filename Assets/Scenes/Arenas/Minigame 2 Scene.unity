@@ -398,7 +398,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.33333334
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: c90c221d117cba044a42397a3a7fcd5a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: e2298cbe119078349b97aa7024d2dc2e, type: 2}
 --- !u!4 &270389948
 Transform:
   m_ObjectHideFlags: 0
@@ -1790,6 +1790,7 @@ MonoBehaviour:
   - {fileID: 1632505269}
   - {fileID: 74832274}
   _lion: {fileID: 302332499}
+  _spareLions: []
 --- !u!1 &1632505268
 GameObject:
   m_ObjectHideFlags: 0

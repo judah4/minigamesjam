@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class LionController : MonoBehaviour
 {
     private Transform _target;
-
+    [SerializeField]
+    private Transform _lionModel;
 
     [SerializeField] private NavMeshAgent _agent;
     private float _startAgentSpeed = 10;
@@ -18,6 +20,10 @@ public class LionController : MonoBehaviour
     private float _lastAttackTime = 0;
     private Transform _lastTargeted;
 
+    private Sequence moveTween;
+    private Sequence holdTween;
+
+    private float _waitTimer = -1;
 
     // Use this for initialization
     void Start ()
@@ -26,11 +32,49 @@ public class LionController : MonoBehaviour
         _startAgentAngular = _agent.angularSpeed;
         _startAgentAccel = _agent.acceleration;
 
+        holdTween = DOTween.Sequence();
+        holdTween.Append(_lionModel.DOLocalRotate(new Vector3(0, 0, 0), .5f)).SetLoops(-1);
+        holdTween.Pause();
+
+        moveTween = DOTween.Sequence();
+        moveTween.Append(_lionModel
+            .DOLocalRotate(new Vector3(0, 0, 10), .2f, RotateMode.Fast));
+        moveTween.Append(_lionModel
+            .DOLocalRotate(new Vector3(0, 0, -10), .2f, RotateMode.Fast));
+        moveTween.SetLoops(-1, LoopType.Yoyo);
+        moveTween.Pause();
+
     }
 	
 	// Update is called once per frame
 	void Update ()
 	{
+
+	    if (_waitTimer != -1)
+	    {
+	        if (Time.time > _waitTimer)
+	        {
+                Wait(false);
+	            _waitTimer = -1;
+	        }
+	    }
+
+	    if (!_agent.isStopped)
+	    {
+	        if (moveTween.IsPlaying() == false)
+	        {
+	            moveTween.Play();
+	            holdTween.Pause();
+	        }
+	    }
+	    else
+	    {
+	        if (holdTween.IsPlaying() == false)
+	        {
+	            holdTween.Play();
+	            moveTween.Pause();
+	        }
+        }
 
 	    _agent.speed = _startAgentSpeed + GamaManager.Instance.Level;
 	    _agent.angularSpeed = _startAgentAngular + GamaManager.Instance.Level * 5;
@@ -106,6 +150,11 @@ public class LionController : MonoBehaviour
         var dir = collision.transform.position - transform.position;
 
         animal.Rigidbody.AddForce(dir * _pushPower, ForceMode.Impulse);
+
+        _target = null;
+
+        Wait(true);
+        _waitTimer = Time.time + 1;
 
         //Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         //body.velocity = pushDir * 10;

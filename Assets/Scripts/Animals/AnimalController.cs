@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
 public class CharacterSetup
 {
@@ -43,6 +42,14 @@ public class AnimalController : MonoBehaviour
 
     [SerializeField]
     private AudioSource _audioSource;
+    [SerializeField]
+    private AudioSource _soundEffectSource;
+    [SerializeField]
+    private AudioClip _bounceSound;
+
+    [SerializeField]
+    private List<AudioClip> _eatClips;
+
 
     public bool Dead
     {
@@ -65,7 +72,10 @@ public class AnimalController : MonoBehaviour
         get { return _life; }
     }
 
-    public string CharacterName;
+    public string CharacterName
+    {
+        get { return CharacterSetup[characterId].Name; }
+    }
 
     private Vector3? _floatPos;
 
@@ -130,14 +140,38 @@ public class AnimalController : MonoBehaviour
 
 	    if (_movement.magnitude > 0)
 	    {
+	        if (_audioSource.clip != CharacterSetup[characterId].Footsteps)
+	        {
+	            _audioSource.clip = CharacterSetup[characterId].Footsteps;
+
+	        }
+
+	        if (_audioSource.isPlaying == false)
+	        {
+                _audioSource.Play();
+	        }
+
 	        var rot = Quaternion.LookRotation(_movement);
 	        _rigidbody.transform.rotation = Quaternion.Lerp(_rigidbody.transform.rotation, rot, 10 * Time.deltaTime);
 	    }
-	}
+	    else
+	    {
+	        if (_audioSource.isPlaying)
+	        {
+	            _audioSource.Stop();
+	        }
+
+        }
+    }
 
     public void Stun(float length)
     {
         _lockTime = Time.time + length;
+
+        //do bounce
+        _soundEffectSource.clip = _bounceSound;
+        //_soundEffectSource.Play();
+
     }
 
     public void SetCharacter(int charId)
@@ -201,5 +235,11 @@ public class AnimalController : MonoBehaviour
         _life += amt;
 
         OnLifeChange.Invoke(_life);
+    }
+
+    public void PlayEatEffect()
+    {
+        _soundEffectSource.clip = _eatClips[Random.Range(0, _eatClips.Count)];
+        _soundEffectSource.Play();
     }
 }

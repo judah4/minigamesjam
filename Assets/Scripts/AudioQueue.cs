@@ -11,9 +11,13 @@ public class AudioQueue : MonoBehaviour
 
     [SerializeField]
     private List<AudioClip> _audioClips;
+
+    [SerializeField] private bool _noLoop;
     [Header("Internal")]
     [SerializeField]
     private int _index = 0;
+
+
 
 	// Use this for initialization
 	void Start ()
@@ -37,7 +41,7 @@ public class AudioQueue : MonoBehaviour
         {
             //loop
             _audioSource.clip = _audioClips[_index];
-            _audioSource.loop = true;
+            _audioSource.loop = !_noLoop;
             
         }
         else

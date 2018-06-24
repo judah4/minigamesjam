@@ -14,7 +14,7 @@ public class GameTimerUI : MonoBehaviour
     public void TimeUpdate(float gameTime)
     {
 
-        if (gameTime < 3.5f && _countDownSource.isPlaying == false)
+        if (gameTime < 3.2f && _countDownSource.isPlaying == false)
         {
             _countDownSource.Play();
         }

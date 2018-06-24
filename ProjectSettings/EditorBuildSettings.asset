@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Arenas/WaitingRoom.unity
     guid: 68afce7ae46142b489eb8421a86f4f04
   - enabled: 1
+    path: Assets/Scenes/FinishScene.unity
+    guid: 5e83dcc453bbfb54b92448ae0bc5b5e9
+  - enabled: 1
     path: Assets/Scenes/Arenas/Minigame 2 Scene.unity
     guid: e008183bb7d8ab84498f26ebbfe4ec0c
   - enabled: 1

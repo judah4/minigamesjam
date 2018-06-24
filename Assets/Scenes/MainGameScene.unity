@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43894833, g: 0.48716092, b: 0.56742203, a: 1}
+  m_IndirectSpecularColor: {r: 0.4389488, g: 0.48716158, b: 0.5674227, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -166,6 +166,11 @@ Prefab:
       propertyPath: _animal
       value: 
       objectReference: {fileID: 1059242359}
+    - target: {fileID: 114158385453490810, guid: 32378e1574260934b96c1d4ce253ea1d,
+        type: 2}
+      propertyPath: CharacterName
+      value: Cuby
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32378e1574260934b96c1d4ce253ea1d, type: 2}
   m_IsPrefabParent: 0
@@ -281,6 +286,7 @@ MonoBehaviour:
   _life: 10
   _lockTime: 0
   _pushPower: 9
+  CharacterName: Panpan
   OnLifeChange:
     m_PersistentCalls:
       m_Calls: []
@@ -478,6 +484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultScene: WaitingRoom
+  _resultScene: FinishScene
+  _pauseScene: PauseScene
   Scenes:
   - Game1
   - Minigame 2 Scene
@@ -487,6 +495,7 @@ MonoBehaviour:
   - {fileID: 1059242359}
   - {fileID: 756302946}
   _level: 0
+  Winners: []
 --- !u!114 &1516693177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,6 +515,7 @@ MonoBehaviour:
   _life: 10
   _lockTime: 0
   _pushPower: 9
+  CharacterName: Fen
   OnLifeChange:
     m_PersistentCalls:
       m_Calls: []

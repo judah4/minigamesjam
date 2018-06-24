@@ -12,11 +12,14 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("Escape key");
             if (!pausePanel.activeInHierarchy)
             {
+                Debug.Log("not active!");
+
                 PauseGame();
             }
-            if (pausePanel.activeInHierarchy)
+            else if (pausePanel.activeInHierarchy)
             {
                 ContinueGame();
             }
@@ -24,8 +27,10 @@ public class PauseMenu : MonoBehaviour
     }
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        Debug.Log("pausing!");
         pausePanel.SetActive(true);
+        Time.timeScale = 0;
+        
         //Disable scripts that still work while timescale is set to 0
     }
     public void ContinueGame()

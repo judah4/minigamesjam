@@ -23,6 +23,9 @@ public class GamaManager : MonoBehaviour
     [SerializeField]
     private string _resultScene;
 
+    [SerializeField]
+    private string _pauseScene;
+
     public List<string> Scenes = new List<string>();
 
     [SerializeField]
@@ -56,6 +59,7 @@ public class GamaManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SceneManager.LoadScene(_pauseScene, LoadSceneMode.Additive);
 
         //Load Initial Scene
         SceneManager.LoadScene(_defaultScene, LoadSceneMode.Additive);
@@ -66,6 +70,7 @@ public class GamaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (GameState == GameState.Wait)
         {
             if (Input.GetKeyUp(KeyCode.Space))

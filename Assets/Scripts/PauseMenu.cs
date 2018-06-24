@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class Pause : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject pausePanel;
@@ -22,13 +22,13 @@ public class Pause : MonoBehaviour
             }
         }
     }
-    private void PauseGame()
+    public void PauseGame()
     {
         Time.timeScale = 0;
         pausePanel.SetActive(true);
         //Disable scripts that still work while timescale is set to 0
     }
-    private void ContinueGame()
+    public void ContinueGame()
     {
         Time.timeScale = 1;
         pausePanel.SetActive(false);

@@ -57,4 +57,9 @@ public class LionController : MonoBehaviour
         //Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         //body.velocity = pushDir * 10;
     }
+
+    public void Wait(bool wait)
+    {
+        _agent.isStopped = wait;
+    }
 }

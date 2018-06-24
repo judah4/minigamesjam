@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameState
+{
+    Play,
+    Unload,
+    Load
+}
+
 public class GamaManager : MonoBehaviour
 {
 
@@ -18,6 +25,13 @@ public class GamaManager : MonoBehaviour
 
     [SerializeField]
     private List<AnimalController> _players;
+
+    private GameState _gameState;
+
+    public GameState GameState
+    {
+        get { return _gameState; }
+    }
 
     public List<AnimalController> Players
     {
@@ -67,6 +81,8 @@ public class GamaManager : MonoBehaviour
 
     IEnumerator LoadSceneAsync(string sceneName)
     {
+
+        _gameState = GameState.Unload;
         //lift characters
         for (int cnt = 0; cnt < _players.Count; cnt++)
         {
@@ -81,10 +97,20 @@ public class GamaManager : MonoBehaviour
 
             loadedScenes.Remove(loadedScenes[0]);
         }
-        
+
+        _gameState = GameState.Load;
+
         //reload scene
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         loadedScenes.Add(sceneName);
+
+        yield return new WaitForSeconds(0.5f);
+
+        
+
+        yield return new WaitForSeconds(1f);
+
+        _gameState = GameState.Play;
 
         //for (int cnt = 0; cnt < _players.Count; cnt++)
         //{

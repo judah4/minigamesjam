@@ -22,6 +22,17 @@ public abstract class Minigame : MonoBehaviour
 
     protected void LoadIn()
     {
+        StartCoroutine(LoadAsync());
+        
+    }
+
+    IEnumerator LoadAsync()
+    {
+        while (GamaManager.Instance.GameState != GameState.Play)
+        {
+            yield return 0;
+        }
+
         for (int cnt = 0; cnt < GamaManager.Instance.Players.Count; cnt++)
         {
             GamaManager.Instance.Players[cnt].Freeze(false, Spawns[cnt].position);
@@ -66,6 +77,10 @@ public class FruitThrowing : Minigame
 	// Update is called once per frame
 	void Update ()
 	{
+
+        if(GamaManager.Instance.GameState != GameState.Play)
+            return;
+
 	    _matchTimer -= Time.deltaTime;
 	    OnMatchTimer.Invoke(_matchTimer);
 

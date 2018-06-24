@@ -22,6 +22,8 @@ public class TigerRun : Minigame
 	void Update ()
 	{
 
+	    _lion.Wait(GamaManager.Instance.GameState != GameState.Play);
+
 	    AnimalController closest = null;
 	    for (int cnt = 0; cnt < GamaManager.Instance.Players.Count; cnt++)
 	    {

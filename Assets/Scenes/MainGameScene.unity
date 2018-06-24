@@ -169,7 +169,7 @@ Prefab:
     - target: {fileID: 114158385453490810, guid: 32378e1574260934b96c1d4ce253ea1d,
         type: 2}
       propertyPath: CharacterName
-      value: Cuby
+      value: Cornelius
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32378e1574260934b96c1d4ce253ea1d, type: 2}

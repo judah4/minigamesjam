@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43894833, g: 0.48716092, b: 0.56742203, a: 1}
+  m_IndirectSpecularColor: {r: 0.4389488, g: 0.48716158, b: 0.5674227, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -161,6 +161,11 @@ Prefab:
       propertyPath: PlayerNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114199630658474280, guid: 32378e1574260934b96c1d4ce253ea1d,
+        type: 2}
+      propertyPath: _animal
+      value: 
+      objectReference: {fileID: 1059242359}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32378e1574260934b96c1d4ce253ea1d, type: 2}
   m_IsPrefabParent: 0
@@ -227,11 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f50529b83d47b46948f078ac3580fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fruit: 0
-  OnPointsGained:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: FruitEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _animal: {fileID: 756302946}
 --- !u!114 &213340359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +281,10 @@ MonoBehaviour:
   _life: 10
   _lockTime: 0
   _pushPower: 9
+  OnLifeChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: FruitEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &872420215
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +579,7 @@ MonoBehaviour:
   - {fileID: 1516693177}
   - {fileID: 1059242359}
   - {fileID: 756302946}
+  _level: 0
 --- !u!114 &1516693177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,6 +599,10 @@ MonoBehaviour:
   _life: 10
   _lockTime: 0
   _pushPower: 9
+  OnLifeChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: FruitEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1546643243
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,11 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f50529b83d47b46948f078ac3580fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fruit: 0
-  OnPointsGained:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: FruitEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _animal: {fileID: 1516693177}
 --- !u!114 &1546643247
 MonoBehaviour:
   m_ObjectHideFlags: 0

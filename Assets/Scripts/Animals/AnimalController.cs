@@ -83,6 +83,8 @@ public class AnimalController : MonoBehaviour
 
     public FruitEvent OnLifeChange;
 
+    private Sequence moveTween;
+    private Sequence holdTween;
     // Use this for initialization
     void Start()
     {
@@ -97,8 +99,17 @@ public class AnimalController : MonoBehaviour
         }
 
 
-        var tween = CharacterSetup[characterId].Model.transform.DOLocalRotate(new Vector3(0, 0, 10), .5f, RotateMode.Fast).SetLoops(-1, LoopType.Yoyo);
+        holdTween = DOTween.Sequence();
+        holdTween.Append(CharacterSetup[characterId].Model.transform.DOLocalRotate(new Vector3(0, 0, 0), .5f)).SetLoops(-1);
+        holdTween.Pause();
 
+        moveTween = DOTween.Sequence();
+        moveTween.Append(CharacterSetup[characterId].Model.transform
+            .DOLocalRotate(new Vector3(0, 0, 10), .2f, RotateMode.Fast));
+        moveTween.Append(CharacterSetup[characterId].Model.transform
+            .DOLocalRotate(new Vector3(0, 0, -10), .2f, RotateMode.Fast));
+        moveTween.SetLoops(-1, LoopType.Yoyo);
+        moveTween.Pause();
     }
 	
 	// Update is called once per frame
@@ -129,6 +140,7 @@ public class AnimalController : MonoBehaviour
             }
 	    }
 
+
 	    if (Dead)
 	    {
             gameObject.SetActive(false);
@@ -145,6 +157,12 @@ public class AnimalController : MonoBehaviour
 
 	    if (_movement.magnitude > 0)
 	    {
+	        if (moveTween.IsPlaying() == false)
+	        {
+	            moveTween.Play();
+	            holdTween.Pause();
+	        }
+
 	        if (_audioSource.clip != CharacterSetup[characterId].Footsteps)
 	        {
 	            _audioSource.clip = CharacterSetup[characterId].Footsteps;
@@ -161,7 +179,14 @@ public class AnimalController : MonoBehaviour
 	    }
 	    else
 	    {
-	        if (_audioSource.isPlaying)
+
+	        if (holdTween.IsPlaying() == false)
+	        {
+	            holdTween.Play();
+	            moveTween.Pause();
+	        }
+
+            if (_audioSource.isPlaying)
 	        {
 	            _audioSource.Stop();
 	        }

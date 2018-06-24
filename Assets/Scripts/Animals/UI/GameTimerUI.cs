@@ -7,10 +7,18 @@ public class GameTimerUI : MonoBehaviour
 {
 
     [SerializeField]
+    private AudioSource _countDownSource;
+    [SerializeField]
     private Text _text;
 
     public void TimeUpdate(float gameTime)
     {
+
+        if (gameTime < 3.5f && _countDownSource.isPlaying == false)
+        {
+            _countDownSource.Play();
+        }
+
         if (gameTime < 0)
         {
             _text.text = "0:00";

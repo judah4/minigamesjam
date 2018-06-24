@@ -646,7 +646,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hippo Dome
+  m_Text: HippoDrome
 --- !u!222 &657473815
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -864,7 +864,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11500000, guid: 5e56996cd485b854ebf929932434d109, type: 3}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:

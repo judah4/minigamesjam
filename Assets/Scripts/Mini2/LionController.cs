@@ -6,6 +6,12 @@ using UnityEngine.AI;
 
 public class LionController : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource _audioSource;
+
+    [SerializeField]
+    private AudioClip _runningClip;
+
     private Transform _target;
     [SerializeField]
     private Transform _lionModel;
@@ -67,6 +73,12 @@ public class LionController : MonoBehaviour
 	            moveTween.Play();
 	            holdTween.Pause();
 	        }
+
+	        if (_audioSource.isPlaying == false)
+	        {
+	            _audioSource.Play();
+	        }
+
 	    }
 	    else
 	    {
@@ -75,6 +87,12 @@ public class LionController : MonoBehaviour
 	            holdTween.Play();
 	            moveTween.Pause();
 	        }
+
+	        if (_audioSource.isPlaying)
+	        {
+	            _audioSource.Stop();
+	        }
+
         }
 
 	    _agent.speed = _startAgentSpeed + GamaManager.Instance.Level;

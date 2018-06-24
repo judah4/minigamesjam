@@ -611,7 +611,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 54945736442981124}
   _movement: {x: 0, y: 0, z: 0}
   _moveSpeed: 10
-  _life: 10
+  _life: 20
   _lockTime: 0
   _pushPower: 9
   _audioSource: {fileID: 82468067560489018}

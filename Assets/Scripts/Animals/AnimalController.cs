@@ -37,6 +37,14 @@ public class AnimalController : MonoBehaviour
         get { return _rigidbody; }
     }
 
+    private bool _loadingIn = false;
+    public bool Frozen
+    {
+        get { return  _rigidbody.isKinematic; }
+    }
+
+    private Vector3? _floatPos;
+
     // Use this for initialization
     void Start()
     {
@@ -55,7 +63,31 @@ public class AnimalController : MonoBehaviour
 	void Update ()
 	{
 
-        if(Dead)
+	    if (Frozen)
+	    {
+	        if (_floatPos != null)
+	        {
+                _rigidbody.MovePosition(Vector3.Lerp(transform.position, _floatPos.Value, Time.deltaTime * 5));
+	        }
+	    }
+
+	    if (_floatPos == null)
+	    {
+	        _loadingIn = false;
+	        _rigidbody.isKinematic = false;
+        }
+
+        if (_loadingIn)
+	    {
+	        
+	        if (Vector3.Distance(_rigidbody.position, _floatPos.Value) < .5f)
+	        {
+	            _loadingIn = false;
+	            _rigidbody.isKinematic = false;
+            }
+	    }
+
+        if(Dead || Frozen)
             return;
 
 	    if (Time.time > _lockTime)
@@ -71,7 +103,7 @@ public class AnimalController : MonoBehaviour
 	    }
 	}
 
-    void Stun(float length)
+    public void Stun(float length)
     {
         _lockTime = Time.time + length;
     }
@@ -105,5 +137,20 @@ public class AnimalController : MonoBehaviour
     {
         _movement = movement;
         _movement.y = 0;
+    }
+
+    public void Freeze(bool freeze, Vector3? pos = null)
+    {
+        if (freeze)
+        {
+            _loadingIn = false;
+            _rigidbody.isKinematic = true;
+        }
+        else
+        {
+            _loadingIn = true;
+        }
+
+        _floatPos = pos;
     }
 }

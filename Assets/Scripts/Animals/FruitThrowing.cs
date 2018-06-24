@@ -18,7 +18,43 @@ public abstract class Minigame : MonoBehaviour
     //    get { return _players; }
     //}
 
+    [SerializeField]
+    protected float _matchTimer = 40;
+
+    public TimerEvent OnMatchTimer;
+
     public List<Transform> Spawns = new List<Transform>();
+
+    private bool _calledMatchOver = false;
+
+    protected void LoadIn()
+    {
+        StartCoroutine(LoadAsync());
+        
+    }
+
+    IEnumerator LoadAsync()
+    {
+        while (GamaManager.Instance.GameState != GameState.Play)
+        {
+            yield return 0;
+        }
+
+        for (int cnt = 0; cnt < GamaManager.Instance.Players.Count; cnt++)
+        {
+            GamaManager.Instance.Players[cnt].Freeze(false, Spawns[cnt].position);
+
+        }
+    }
+
+    protected void MatchOver()
+    {
+        if(_calledMatchOver)
+            return;
+
+        _calledMatchOver = true;
+        GamaManager.Instance.LoadNextLevel();
+    }
 
 }
 
@@ -38,25 +74,33 @@ public class FruitThrowing : Minigame
 
     private float _time;
 
-    [SerializeField]
-    private float _matchTimer = 80;
-
-    public TimerEvent OnMatchTimer;
+    
 
 
     
 
     // Use this for initialization
     void Start ()
-	{
-	    _time = Time.time + .04f;
+    {
+        LoadIn();
+
+        _time = Time.time + .04f;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+
+        if(GamaManager.Instance.GameState != GameState.Play)
+            return;
+
 	    _matchTimer -= Time.deltaTime;
 	    OnMatchTimer.Invoke(_matchTimer);
+
+	    if (_matchTimer < 0)
+	    {
+            MatchOver();
+	    }
 
         if (Time.time <_time)
             return;

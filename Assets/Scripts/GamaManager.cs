@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameState
+{
+    Play,
+    Unload,
+    Load
+}
+
 public class GamaManager : MonoBehaviour
 {
 
@@ -18,6 +25,16 @@ public class GamaManager : MonoBehaviour
 
     [SerializeField]
     private List<AnimalController> _players;
+
+    private GameState _gameState = GameState.Play;
+
+    [SerializeField]
+    private int _level = 0;
+
+    public GameState GameState
+    {
+        get { return _gameState; }
+    }
 
     public List<AnimalController> Players
     {
@@ -43,9 +60,9 @@ public class GamaManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            LoadScene(Scenes[Random.Range(0, Scenes.Count)]);
+            LoadScene(Scenes[_level % Scenes.Count]);
 
         }
 
@@ -59,6 +76,12 @@ public class GamaManager : MonoBehaviour
 
     }
 
+    public void LoadNextLevel()
+    {
+        _level++;
+        LoadScene(Scenes[_level % Scenes.Count]);
+    }
+
     void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneAsync(sceneName));
@@ -67,14 +90,42 @@ public class GamaManager : MonoBehaviour
 
     IEnumerator LoadSceneAsync(string sceneName)
     {
+
+        _gameState = GameState.Unload;
+        //lift characters
+        for (int cnt = 0; cnt < _players.Count; cnt++)
+        {
+            _players[cnt].Freeze(true, _players[cnt].transform.position + new Vector3(0, 20, 0));
+
+        }
+
+        //unload scene
         while (loadedScenes.Count > 0)
         {
             yield return SceneManager.UnloadSceneAsync(loadedScenes[0]);
 
             loadedScenes.Remove(loadedScenes[0]);
         }
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+
+        _gameState = GameState.Load;
+
+        //reload scene
+        yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         loadedScenes.Add(sceneName);
+
+        yield return new WaitForSeconds(0.5f);
+
+        
+
+        yield return new WaitForSeconds(1f);
+
+        _gameState = GameState.Play;
+
+        //for (int cnt = 0; cnt < _players.Count; cnt++)
+        //{
+        //    _players[cnt].Freeze(false);
+
+        //}
 
         //var game = GameObject.FindObjectOfType<Minigame>();
 

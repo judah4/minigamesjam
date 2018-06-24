@@ -168,9 +168,11 @@ public class AnimalController : MonoBehaviour
     {
         _lockTime = Time.time + length;
 
-        //do bounce
+        if (_soundEffectSource == null)
+            return;
+
         _soundEffectSource.clip = _bounceSound;
-        //_soundEffectSource.Play();
+        _soundEffectSource.Play();
 
     }
 
@@ -239,6 +241,9 @@ public class AnimalController : MonoBehaviour
 
     public void PlayEatEffect()
     {
+        if(_soundEffectSource == null)
+            return;
+
         _soundEffectSource.clip = _eatClips[Random.Range(0, _eatClips.Count)];
         _soundEffectSource.Play();
     }

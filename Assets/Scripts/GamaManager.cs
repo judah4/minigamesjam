@@ -141,8 +141,11 @@ public class GamaManager : MonoBehaviour
 
     IEnumerator LoadSceneAsync(string sceneName)
     {
+        if (_gameState != GameState.End)
+        {
+            _gameState = GameState.Unload;
+        }
 
-        _gameState = GameState.Unload;
         //lift characters
         for (int cnt = 0; cnt < _players.Count; cnt++)
         {
@@ -158,7 +161,10 @@ public class GamaManager : MonoBehaviour
             loadedScenes.Remove(loadedScenes[0]);
         }
 
-        _gameState = GameState.Load;
+        if (_gameState != GameState.End)
+        {
+            _gameState = GameState.Load;
+        }
 
         //reload scene
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
@@ -170,7 +176,10 @@ public class GamaManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        _gameState = GameState.Play;
+        if (_gameState != GameState.End)
+        {
+            _gameState = GameState.Play;
+        }
 
         //for (int cnt = 0; cnt < _players.Count; cnt++)
         //{

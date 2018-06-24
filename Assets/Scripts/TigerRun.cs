@@ -8,8 +8,8 @@ public class TigerRun : Minigame
     [SerializeField]
     public LionController _lion;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 	    LoadIn();
 
@@ -22,7 +22,15 @@ public class TigerRun : Minigame
 	void Update ()
 	{
 
-	    _lion.Wait(GamaManager.Instance.GameState != GameState.Play);
+	    _matchTimer -= Time.deltaTime;
+	    OnMatchTimer.Invoke(_matchTimer);
+
+	    if (_matchTimer < 0)
+	    {
+	        MatchOver();
+	    }
+
+        _lion.Wait(GamaManager.Instance.GameState != GameState.Play);
 
 	    AnimalController closest = null;
 	    for (int cnt = 0; cnt < GamaManager.Instance.Players.Count; cnt++)

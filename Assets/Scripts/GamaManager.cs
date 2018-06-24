@@ -26,7 +26,10 @@ public class GamaManager : MonoBehaviour
     [SerializeField]
     private List<AnimalController> _players;
 
-    private GameState _gameState;
+    private GameState _gameState = GameState.Play;
+
+    [SerializeField]
+    private int _level = 0;
 
     public GameState GameState
     {
@@ -59,7 +62,7 @@ public class GamaManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            LoadScene(Scenes[Random.Range(0, Scenes.Count)]);
+            LoadScene(Scenes[_level % Scenes.Count]);
 
         }
 
@@ -71,6 +74,12 @@ public class GamaManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void LoadNextLevel()
+    {
+        _level++;
+        LoadScene(Scenes[_level % Scenes.Count]);
     }
 
     void LoadScene(string sceneName)

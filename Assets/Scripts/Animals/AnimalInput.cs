@@ -17,7 +17,7 @@ public class AnimalInput : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		
+		AnimalController.SetCharacter((int)PlayerNumber-1);
 	}
 	
 	// Update is called once per frame

@@ -2,10 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class CharacterSetup
+{
+    public string Name;
+    public GameObject Model;
+    public AudioClip Footsteps;
+}
+
+[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 public class AnimalController : MonoBehaviour
 {
+
+    public List<CharacterSetup> CharacterSetup;
+    private int characterId = 0;
+
     [SerializeField]
     private CapsuleCollider _collider;
 
@@ -26,6 +40,9 @@ public class AnimalController : MonoBehaviour
 
     [SerializeField]
     private float _pushPower = 9;
+
+    [SerializeField]
+    private AudioSource _audioSource;
 
     public bool Dead
     {
@@ -121,6 +138,16 @@ public class AnimalController : MonoBehaviour
     public void Stun(float length)
     {
         _lockTime = Time.time + length;
+    }
+
+    public void SetCharacter(int charId)
+    {
+        characterId = charId;
+        for (int cnt = 0; cnt < CharacterSetup.Count; cnt++)
+        {
+            CharacterSetup[cnt].Model.SetActive(characterId == cnt);
+            
+        }
     }
 
     void OnCollisionEnter(Collision collision)

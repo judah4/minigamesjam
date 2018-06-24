@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StartPoint
   - Fruit
+  - ShowOnPause
   layers:
   - Default
   - TransparentFX

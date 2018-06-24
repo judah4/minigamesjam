@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arenas/Minigame 2 Scene.unity
     guid: e008183bb7d8ab84498f26ebbfe4ec0c
+  - enabled: 1
+    path: Assets/Scenes/PauseScene.unity
+    guid: 7b50a889e43dce14e91ff9586b04174f
   m_configObjects: {}

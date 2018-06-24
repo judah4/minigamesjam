@@ -16,6 +16,14 @@ public class Fruit : MonoBehaviour
 
     private float _startTime;
 
+    [SerializeField]
+    private int _healAmt = 1;
+
+    public int HealAmt
+    {
+        get { return _healAmt; }
+    }
+
     // Use this for initialization
     void Start ()
     {

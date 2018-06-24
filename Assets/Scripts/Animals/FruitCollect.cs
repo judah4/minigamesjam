@@ -23,8 +23,16 @@ public class FruitCollect : MonoBehaviour
         if (collision.transform.tag != "Fruit")
             return;
 
+        var fruit = collision.gameObject.GetComponent<Fruit>();
+
+        var healAmt = 1;
+        if (fruit != null)
+        {
+            healAmt = fruit.HealAmt;
+        }
+
         //collect
-        _animal.AddLife(1);
+        _animal.AddLife(healAmt);
 
         _animal.PlayEatEffect();
 

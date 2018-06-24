@@ -51,18 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e470534cdef7c9429220a9275942944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Spawns: []
-  _fruitPrefabs:
-  - {fileID: 114312549232592454, guid: 9cba41b4da2b11441b35cca5a9d5144c, type: 2}
-  - {fileID: 114312549232592454, guid: 7a1ac998f1067e248a1129858d9643e8, type: 2}
-  - {fileID: 114312549232592454, guid: 61ed8f91b8564324280f4c2fca0f4e2d, type: 2}
-  _interval: 1
-  _spawnHeightRange: {x: 10, y: 20}
-  _spawnRadius: 20
   _matchTimer: 45
   OnMatchTimer:
     m_PersistentCalls:
@@ -79,3 +67,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: TimerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  Spawns: []
+  _fruitPrefabs:
+  - {fileID: 114312549232592454, guid: 9cba41b4da2b11441b35cca5a9d5144c, type: 2}
+  - {fileID: 114312549232592454, guid: 7a1ac998f1067e248a1129858d9643e8, type: 2}
+  - {fileID: 114312549232592454, guid: 61ed8f91b8564324280f4c2fca0f4e2d, type: 2}
+  - {fileID: 114504292530176560, guid: 82e535939a4feef45bdccc95eb4aac2a, type: 2}
+  _interval: 1
+  _spawnHeightRange: {x: 10, y: 20}
+  _spawnRadius: 20

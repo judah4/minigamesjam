@@ -16,11 +16,12 @@ public class AudioQueue : MonoBehaviour
     [Header("Internal")]
     [SerializeField]
     private int _index = 0;
+    [SerializeField]
+    private bool playedLast = false;
 
 
-
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 	    _audioSource.clip = _audioClips[_index];
 	    _audioSource.Play();
@@ -39,15 +40,23 @@ public class AudioQueue : MonoBehaviour
     {
         if (_audioClips.Count == _index + 1)
         {
+            playedLast = true;
+
+            if (_noLoop)
+            {
+                return;
+            }
+
+
             //loop
-            _audioSource.clip = _audioClips[_index];
             _audioSource.loop = !_noLoop;
-            
+
         }
         else
         {
             _index++;
         }
+
 
         _audioSource.clip = _audioClips[_index];
         _audioSource.Play();

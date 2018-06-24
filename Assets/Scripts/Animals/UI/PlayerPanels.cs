@@ -22,8 +22,7 @@ public class PlayerPanels : MonoBehaviour
 
             panel.SetPlayer("Player " + (cnt+1));
 
-            var collect = GamaManager.Instance.Players[cnt].GetComponent<FruitCollect>();
-            collect.OnPointsGained.AddListener(panel.SetScore);
+            GamaManager.Instance.Players[cnt].OnLifeChange.AddListener(panel.SetScore);
 
         }
 	}

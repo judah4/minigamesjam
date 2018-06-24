@@ -18,6 +18,6 @@ public class PlayerPanel : MonoBehaviour
 
     public void SetScore(int score)
     {
-        _scoreText.text = "Fruit: " + score;
+        _scoreText.text = "Life: " + score;
     }
 }

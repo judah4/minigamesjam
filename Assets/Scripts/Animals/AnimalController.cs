@@ -45,6 +45,9 @@ public class AnimalController : MonoBehaviour
 
     private Vector3? _floatPos;
 
+
+    public FruitEvent OnLifeChange;
+
     // Use this for initialization
     void Start()
     {
@@ -152,5 +155,12 @@ public class AnimalController : MonoBehaviour
         }
 
         _floatPos = pos;
+    }
+
+    public void AddLife(int amt)
+    {
+        _life += amt;
+
+        OnLifeChange.Invoke(_life);
     }
 }

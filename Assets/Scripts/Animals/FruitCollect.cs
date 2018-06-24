@@ -11,16 +11,9 @@ public class FruitEvent : UnityEvent<int>
 
 public class FruitCollect : MonoBehaviour
 {
-    [SerializeField]
-    private int _fruit = 0;
 
-    public int Fruit
-    {
-        get { return _fruit; }
-    }
+    [SerializeField] private AnimalController _animal;
 
-
-    public FruitEvent OnPointsGained;
 
 
     void OnCollisionEnter(Collision collision)
@@ -29,16 +22,11 @@ public class FruitCollect : MonoBehaviour
 
         if (collision.transform.tag != "Fruit")
             return;
-        
+
         //collect
-        _fruit++;
+        _animal.AddLife(1);
 
         Destroy(collision.gameObject);
-
-        if (OnPointsGained != null)
-        {
-            OnPointsGained.Invoke(_fruit);
-        }
 
     }
 }

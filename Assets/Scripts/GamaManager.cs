@@ -58,6 +58,11 @@ public class GamaManager : MonoBehaviour
         get { return _gameState; }
     }
 
+    public int Level
+    {
+        get { return _level; }
+    }
+
     public List<AnimalController> Players
     {
         get { return _players; }

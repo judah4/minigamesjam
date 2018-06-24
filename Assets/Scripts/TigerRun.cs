@@ -39,29 +39,14 @@ public class TigerRun : Minigame
 	    int numAlive = 0;
 	    AnimalController alivePlayer = null;
 
-        AnimalController closest = null;
 	    for (int cnt = 0; cnt < GamaManager.Instance.Players.Count; cnt++)
 	    {
 	        if (GamaManager.Instance.Players[cnt].Dead)
 	        {
-	            
                 continue;
 	        }
 	        numAlive++;
 	        alivePlayer = GamaManager.Instance.Players[cnt];
-
-            if (closest == null)
-	        {
-	            closest = GamaManager.Instance.Players[cnt];
-                continue;
-
-	        }
-
-	        if (Vector3.Distance(GamaManager.Instance.Players[cnt].transform.position, _lion.transform.position) <
-	            Vector3.Distance(closest.transform.position, _lion.transform.position))
-	        {
-	            closest = GamaManager.Instance.Players[cnt];
-            }
 
 	    }
 
@@ -70,9 +55,6 @@ public class TigerRun : Minigame
 	        GamaManager.Instance.FinishGame(alivePlayer);
 	    }
 
-	    if (closest != null)
-	    {
-	        _lion.SetTarget(closest);
-        }
+	    
 	}
 }

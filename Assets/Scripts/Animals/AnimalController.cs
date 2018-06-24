@@ -104,7 +104,7 @@ public class AnimalController : MonoBehaviour
 	    {
 	        if (_floatPos != null)
 	        {
-                _rigidbody.MovePosition(Vector3.Lerp(transform.position, _floatPos.Value, Time.deltaTime * 5));
+                _rigidbody.MovePosition(Vector3.Lerp(transform.position, _floatPos.Value, Time.deltaTime * 10));
 	        }
 	    }
 

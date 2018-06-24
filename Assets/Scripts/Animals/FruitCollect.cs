@@ -26,6 +26,8 @@ public class FruitCollect : MonoBehaviour
         //collect
         _animal.AddLife(1);
 
+        _animal.PlayEatEffect();
+
         Destroy(collision.gameObject);
 
     }

@@ -42,9 +42,14 @@ public class AnimalController : MonoBehaviour
 
     [SerializeField]
     private AudioSource _audioSource;
-
+    [SerializeField]
+    private AudioSource _soundEffectSource;
     [SerializeField]
     private AudioClip _bounceSound;
+
+    [SerializeField]
+    private List<AudioClip> _eatClips;
+
 
     public bool Dead
     {
@@ -164,8 +169,8 @@ public class AnimalController : MonoBehaviour
         _lockTime = Time.time + length;
 
         //do bounce
-        _audioSource.clip = _bounceSound;
-        //_audioSource.Play();
+        _soundEffectSource.clip = _bounceSound;
+        //_soundEffectSource.Play();
 
     }
 
@@ -230,5 +235,11 @@ public class AnimalController : MonoBehaviour
         _life += amt;
 
         OnLifeChange.Invoke(_life);
+    }
+
+    public void PlayEatEffect()
+    {
+        _soundEffectSource.clip = _eatClips[Random.Range(0, _eatClips.Count)];
+        _soundEffectSource.Play();
     }
 }

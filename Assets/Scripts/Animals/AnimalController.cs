@@ -43,6 +43,11 @@ public class AnimalController : MonoBehaviour
         get { return  _rigidbody.isKinematic; }
     }
 
+    public int Life
+    {
+        get { return _life; }
+    }
+
     private Vector3? _floatPos;
 
 
@@ -88,6 +93,11 @@ public class AnimalController : MonoBehaviour
 	            _loadingIn = false;
 	            _rigidbody.isKinematic = false;
             }
+	    }
+
+	    if (Dead)
+	    {
+            gameObject.SetActive(false);
 	    }
 
         if(Dead || Frozen)

@@ -16,10 +16,14 @@ public class TigerRun : Minigame
 
         _lion.SetTarget(GamaManager.Instance.Players[0]);
 
-	}
-	
-	// Update is called once per frame
-	void Update ()
+	    OnMatchTimer.Invoke(_matchTimer);
+
+
+
+    }
+
+    // Update is called once per frame
+    void Update ()
 	{
 
 	    _matchTimer -= Time.deltaTime;
@@ -32,15 +36,21 @@ public class TigerRun : Minigame
 
         _lion.Wait(GamaManager.Instance.GameState != GameState.Play);
 
-	    AnimalController closest = null;
+	    int numAlive = 0;
+	    AnimalController alivePlayer = null;
+
+        AnimalController closest = null;
 	    for (int cnt = 0; cnt < GamaManager.Instance.Players.Count; cnt++)
 	    {
 	        if (GamaManager.Instance.Players[cnt].Dead)
 	        {
+	            
                 continue;
 	        }
+	        numAlive++;
+	        alivePlayer = GamaManager.Instance.Players[cnt];
 
-	        if (closest == null)
+            if (closest == null)
 	        {
 	            closest = GamaManager.Instance.Players[cnt];
                 continue;
@@ -53,6 +63,11 @@ public class TigerRun : Minigame
 	            closest = GamaManager.Instance.Players[cnt];
             }
 
+	    }
+
+	    if (numAlive <= 1)
+	    {
+	        GamaManager.Instance.FinishGame(alivePlayer);
 	    }
 
 	    if (closest != null)

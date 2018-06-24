@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/MainGameScene.unity
     guid: af3367540d39210478300a6c41682a2b
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Testing/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/ArenaTesting.unity
+    path: Assets/Scenes/Testing/ArenaTesting.unity
     guid: 85f291af1085db94798e85c8de069551
   - enabled: 1
     path: Assets/Scenes/Arenas/Canyon.unity
@@ -30,6 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Arenas/WaitingRoom.unity
     guid: 68afce7ae46142b489eb8421a86f4f04
   - enabled: 1
-    path: Assets/Scenes/Minigame 2 Scene.unity
+    path: Assets/Scenes/Arenas/Minigame 2 Scene.unity
     guid: e008183bb7d8ab84498f26ebbfe4ec0c
   m_configObjects: {}

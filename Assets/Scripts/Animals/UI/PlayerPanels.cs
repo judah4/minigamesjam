@@ -23,6 +23,7 @@ public class PlayerPanels : MonoBehaviour
             panel.SetPlayer("Player " + (cnt+1));
 
             GamaManager.Instance.Players[cnt].OnLifeChange.AddListener(panel.SetScore);
+            panel.SetScore(GamaManager.Instance.Players[cnt].Life);
 
         }
 	}

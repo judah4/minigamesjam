@@ -138,4 +138,8 @@ public class GamaManager : MonoBehaviour
         //}
     }
 
+    public void FinishGame(AnimalController alivePlayer)
+    {
+        throw new System.NotImplementedException();
+    }
 }

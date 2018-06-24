@@ -85,10 +85,13 @@ public class FruitThrowing : Minigame
         LoadIn();
 
         _time = Time.time + .04f;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+        OnMatchTimer.Invoke(_matchTimer);
+
+    }
+
+    // Update is called once per frame
+    void Update ()
 	{
 
         if(GamaManager.Instance.GameState != GameState.Play)

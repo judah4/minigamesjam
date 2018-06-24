@@ -49,6 +49,7 @@ public class LionController : MonoBehaviour
         }
 
         animal.Stun(1);
+        animal.AddLife(-30);
 
         var dir = collision.transform.position - transform.position;
 

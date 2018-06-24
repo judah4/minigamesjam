@@ -8,6 +8,9 @@ public class TigerRun : Minigame
     [SerializeField]
     public LionController _lion;
 
+    [SerializeField]
+    public List<LionController> _spareLions;
+
     // Use this for initialization
     void Start ()
 	{
@@ -18,6 +21,12 @@ public class TigerRun : Minigame
 
 	    OnMatchTimer.Invoke(_matchTimer);
 
+
+	    if (GamaManager.Instance.Level > 5)
+	    {
+	        var otherLion = Instantiate(_lion, _lion.transform.position + new Vector3(2, 0, 2), Quaternion.identity, transform);
+            _spareLions.Add(otherLion);
+	    }
 
 
     }
@@ -34,7 +43,12 @@ public class TigerRun : Minigame
 	        MatchOver();
 	    }
 
-        _lion.Wait(GamaManager.Instance.GameState != GameState.Play);
+	    var wait = GamaManager.Instance.GameState != GameState.Play;
+        _lion.Wait(wait);
+	    for (int cnt = 0; cnt < _spareLions.Count; cnt++)
+	    {
+	        _spareLions[cnt].Wait(wait);
+	    }
 
 	    int numAlive = 0;
 	    AnimalController alivePlayer = null;
